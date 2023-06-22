@@ -39,6 +39,13 @@ jobs:
         run: |
           composer install --no-interaction
 
+      - name: Run migration
+        run: |
+          php artisan key:generate
+          php artisan migrate:fresh --seed
+      - name: Change Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+
       - name: Run test suite
         run: |
           php artisan test
@@ -62,3 +69,8 @@ jobs:
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=5s --health-retries=3
+      redis:
+        image: redis
+        ports:
+          - 6379/tcp
+        options: --health-cmd="redis-cli ping" --health-interval=10s --health-timeout=5s --health-retries=3
