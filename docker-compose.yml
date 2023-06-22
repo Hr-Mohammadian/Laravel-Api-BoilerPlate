@@ -1,0 +1,8 @@
+version: '3'
+services:
+    web:
+        image: web-concierge
+        ports:
+            - "8000:8000"
+        volumes:
+            - .:/var/www
