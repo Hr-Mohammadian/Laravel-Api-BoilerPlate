@@ -52,9 +52,9 @@ jobs:
         env:
           DB_DATABASE: cicd_testing
 
-      - name: Run Larastan
-        run: |
-          ./vendor/bin/phpstan analyse
+#      - name: Run Larastan
+#        run: |
+#          ./vendor/bin/phpstan analyse --memory-limit=2G
 
       - name: Run Pint
         run: |

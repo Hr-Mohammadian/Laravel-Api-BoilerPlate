@@ -4,5 +4,6 @@ services:
         image: web-concierge
         ports:
             - "8000:8000"
+            - "6379:6379"
         volumes:
             - .:/var/www

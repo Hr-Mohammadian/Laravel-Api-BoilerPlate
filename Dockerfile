@@ -90,7 +90,6 @@ RUN docker-php-ext-configure gd \
 RUN apt-get install -y redis-server;
 #COPY ./docker-configs/redis/redis.conf /usr/local/etc/redis/redis.conf
 RUN echo "protected-mode no" >> /etc/redis/redis.conf;
-EXPOSE 6379
 ###########################################
 # PCNTL
 ###########################################
@@ -142,6 +141,8 @@ RUN if [ -f "rr" ]; then \
 
 # Expose port 8000 for the application
 EXPOSE 8000
+EXPOSE 6379
+
 # Start Redis server
 #CMD redis-server --daemonize yes
 #RUN service redis-server start /usr/local/etc/redis/redis.conf --daemonize yes
